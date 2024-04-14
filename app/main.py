@@ -15,7 +15,7 @@ data = {
     "serialize": {
         "json": JsonSerializer,
         "xml": XmlSerializer,
-    }
+    },
 }
 
 

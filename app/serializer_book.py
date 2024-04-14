@@ -14,4 +14,4 @@ class JsonSerializer(Serializer):
 
 class XmlSerializer(Serializer):
     def serialize(self, title: str, content: str) -> str:
-        return f'<title>{title}</title>\n<content>{content}</content>'
+        return f"<title>{title}</title>\n<content>{content}</content>"
