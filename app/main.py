@@ -23,12 +23,15 @@ def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
     for cmd, method_type in commands:
         if cmd == "display":
             display_strategy = data.get("display").get(method_type)()
-            book.display(display_strategy)
+
+            print(display_strategy.display(book.content))
         elif cmd == "print":
             printer_strategy = data.get("print").get(method_type)()
-            book.print_book(printer_strategy)
+
+            printer_strategy.print_content(book.title, book.content)
         elif cmd == "serialize":
             serializer_strategy = data.get("serialize").get(method_type)()
+
             return serializer_strategy.serialize(book.title, book.content)
 
 
