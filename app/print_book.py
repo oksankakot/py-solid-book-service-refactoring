@@ -8,7 +8,12 @@ class Printer(ABC):
 
 
 class ConsolePrinter(Printer):
-    def print_content(self, title: str, content: str) -> None:
+    def __init__(self, content: str = None) -> None:
+        self._content = content
+
+    def print_content(self, title: str, content: str = None) -> None:
+        if content is None:
+            content = self._content
         print(f"Printing the book: {title}...")
         print(content)
 

@@ -21,17 +21,18 @@ data = {
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
     for cmd, method_type in commands:
-        if cmd == "display":
-            display_strategy = data.get("display").get(method_type)()
+        if cmd not in data or method_type not in data[cmd]:
+            print(f"Unknown command or method type: {cmd}, {method_type}")
+            continue
 
+        if cmd == "display":
+            display_strategy = data[cmd][method_type]()
             print(display_strategy.display(book.content))
         elif cmd == "print":
-            printer_strategy = data.get("print").get(method_type)()
-
+            printer_strategy = data[cmd][method_type]()
             printer_strategy.print_content(book.title, book.content)
         elif cmd == "serialize":
-            serializer_strategy = data.get("serialize").get(method_type)()
-
+            serializer_strategy = data[cmd][method_type]()
             return serializer_strategy.serialize(book.title, book.content)
 
 
